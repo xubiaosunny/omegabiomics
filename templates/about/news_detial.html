@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}技术支持{% endblock %}
+{% block css %}
+<style>
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+.blog-list{
+    text-align: center;
+    margin-right: 50px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div style=" height: 100px;"></div>
+<div class="container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <a href="/about/news/"><h4>新闻动态<small>News</small></h4></a>
+        <div class="blog-list">
+            {% for foo in post %}
+                <img src="{{ MEDIA_URL }}{{ foo.img }}" width="100%">
+                <h4>{{ foo.name }}</h4>
+                <br>
+            {% endfor %}
+        </div><!-- /.col-lg-4 -->
+    </div><!--/.sidebar-offcanvas-->
+    <div class="col-xs-12 col-sm-9">
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ item.name }}</h2>
+            <p class="blog-post-meta">{{ item.date }}</p>
+            <hr>
+            {{ item.content |safe }}
+        </div>
+    </div><!--/.col-xs-12.col-sm-9-->
+  </div><!--/row-->
+</div><!--/.container-->
+{% endblock %}
+{% block js %}
+
+<script>
+
+</script>
+{% endblock %}

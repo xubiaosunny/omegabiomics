@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}新闻动态{% endblock %}
+{% block content %}
+<div style=" height: 100px;"></div>
+<div class="container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-9">
+        <div class="jumbotron">
+            <h1>新闻动态</h1>
+        </div>
+        <div class="row">
+            {% for foo in contacts %}
+                <div class="col-sm-12"><hr></div>
+                <div class="col-sm-2">
+                    <a href="{{ foo.id }}/"><img src="{{ MEDIA_URL }}{{ foo.img }}" width="100%"></a>
+                </div>
+                <div class="col-sm-10">
+                    <a href="{{ foo.id }}/"><h3>{{ foo.name }}</h3></a>
+                    <p>{{ foo.content |striptags |slice:"100" |safe }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <!-- -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li {% if not contacts.has_previous %}class="disabled"{% endif %}>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {% for page in pages %}
+                <li {% if contacts.number == page %}class="active"{% endif %}><a href="?page={{ page }}" >{{ page }}</a></li>
+            {% endfor %}
+            <li {% if not contacts.has_next %}class="disabled"{% endif %}>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div><!--/.col-xs-12.col-sm-9-->
+    {% include 'about/sidebar.html' %}
+  </div><!--/row-->
+</div><!--/.container-->
+{% endblock %}
+{% block js %}
+
+<script>
+
+</script>
+{% endblock %}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="xubiaosunny@163.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+	<link rel="stylesheet" type="text/css" href="/static/css/bootsnav.css">
+<style>
+    .col-xs-5ths, .col-sm-5ths, .col-md-5ths, .col-lg-5ths {
+        position: relative;
+        min-height: 1px;
+        padding-right: 10px;
+        padding-left: 10px;
+        }
+
+        @media ( min-width : 768px) {
+            .col-sm-5ths {
+                width: 20%;
+                float: left;
+            }
+        }
+
+        @media ( min-width : 992px) {
+            .col-md-5ths {
+                width: 20%;
+                float: left;
+            }
+        }
+
+        @media ( min-width : 1200px) {
+            .col-lg-5ths {
+                width: 20%;
+                float: left;
+            }
+        }
+</style>
+{% block css %}{% endblock %}
+{% load static %}
+
+</head>
+<body>
+
+    <!-- NAVBAR
+    ================================================== -->
+    <style>
+        /* use navbar-wrapper to wrap navigation bar, the purpose is to overlay navigation bar above slider */
+        .navbar-wrapper {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 51px;
+        }
+        .navbar-wrapper > .container {
+            padding: 0;
+        }
+
+        @media all and (max-width: 768px ){
+            .navbar-wrapper {
+                position: relative;
+                top: 0px;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+    </style>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Omega Genetics</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/">首页</a></li>
+                            <li class="dropdown">
+                                <a href="/service/" class="dropdown-toggle" data-toggle="dropdown">科技服务</a>
+                                <ul class="dropdown-menu">
+                                    {% for k, v in request.session.service.items %}
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >{{ k }}</a>
+                                        <ul class="dropdown-menu">
+                                            {% for i in v %}
+                                            <li><a href="{{ i.0 }}">{{ i.1 }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/medicine/1/" class="dropdown-toggle" data-toggle="dropdown">医学健康</a>
+                                <ul class="dropdown-menu">
+                                    {% for m in request.session.medicine %}
+                                    <li><a href="{{ m.0 }}">{{ m.1 }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/support/1/" class="dropdown-toggle" data-toggle="dropdown">技术支持</a>
+                                <ul class="dropdown-menu">
+                                    {% for s in request.session.support %}
+                                    <li><a href="{{ s.0 }}">{{ s.1 }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="/job/">招贤纳士</a></li>
+                            <li class="dropdown">
+                                <a href="/about/company/" class="dropdown-toggle" data-toggle="dropdown">关于我们</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/about/company/">公司介绍</a></li>
+                                    <li><a href="/about/team/">团队介绍</a></li>
+                                    <li><a href="/about/news/">新闻动态</a></li>
+                                    <li><a href="/about/partner/">合作伙伴</a></li>
+                                    <li><a href="/about/contact_us/">联系我们</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    {% block content %}{% endblock %}
+    <style>
+        /************************************************************************
+        * 7- Footer
+        *************************************************************************/
+        .main-footer{
+          background-color: #2b2b2b;
+          color:#999;
+          font-size: 12px;
+        }
+
+        .main-footer .widgets-area{
+          padding:56px 0 28px 0;
+          min-height: 300px;
+        }
+
+        .main-footer .widgets-area h4{
+          font-size: 15px;
+          color:#ccc;
+        }
+
+        .main-footer .widgets-area .widget li{
+          padding:10px 0;
+          border-bottom:1px solid rgba(255,255,255,0.035);
+        }
+
+        .main-footer .widgets-area .wbc-recent-post-widget h6 a{
+          color:#ccc !important;
+        }
+
+        .main-footer .widget_pages li a,
+        .main-footer .widget_categories li a{
+          border-bottom:1px solid rgba(255,255,255,0.035);
+        }
+
+        .footer-menu ul{
+          list-style: none;
+          overflow: hidden;
+          text-align: right;
+          margin-bottom: 0;
+        }
+
+        .footer-menu li{
+          border-right:1px solid #444;
+          padding:0 8px 0 5px;
+        }
+
+        .footer-menu li:last-child{
+          border: none;
+          padding-right: 0;
+        }
+
+        .footer-menu ul li{
+         display: inline-block;
+        }
+
+        .footer-menu ul > li > ul {
+            display: none;
+        }
+
+        .bottom-band a{
+          color:#888;
+        }
+
+        .bottom-band{
+          background-color:#242424;
+          color:#666;
+          border-top: 1px solid #222;
+          padding:17px 0;
+          font-size: 11px;
+        }
+        .footer-li ul > li {list-style-type:none;}
+    </style>
+    <footer class="main-footer">
+      <div class="widgets-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="widget widget_text">
+                  <div class="textwidget">
+                      <h4 class="widget-title"><img src="/static/img/top-logo.png" width="100%"></h4>
+                      <h5 class="widget-title">相关链接：</h5>
+                      <p><a href="#overview">Omega bio-tek</a></p>
+                      <p><a href="#overview">阿森泰科</a></p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="widget widget_text"><h4 class="widget-title">科技服务</h4>
+                  <div class="footer-li">
+                    <ul style="padding-left: 0px">
+                      {% for k, v in request.session.service.items %}
+                        <a href="{{ v.0.0 }}"><li style="list-style-type:none;border-bottom:0px">{{ k }}</li></a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+            </div>
+              <div class="col-sm-2">
+              <div class="widget widget_text"><h4 class="widget-title">医学健康</h4>
+                  <div class="footer-li">
+                    <ul style="padding-left: 0px">
+                      {% for x in request.session.medicine %}
+                        <a href="{{ x.0 }}"><li style="list-style-type:none;border-bottom:0px">{{ x.1 }}</li></a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+            </div>
+              <div class="col-sm-2">
+              <div class="widget widget_text"><h4 class="widget-title">技术支持</h4>
+                  <div class="footer-li">
+                    <ul style="padding-left: 0px">
+                      {% for x in request.session.support %}
+                        <a href="{{ x.0 }}"><li style="list-style-type:none;border-bottom:0px">{{ x.1 }}</li></a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="widget widget_text"><h4 class="widget-title"></h4>
+                      <div class="textwidget">
+                        <p>地址：北京市昌平区北七家镇西沙工业园11号9#院</p>
+                          <p>电话：010-67832281；67832291；
+                          </p>
+                          <p>网址：www.omegagenetics.com.cn</p>
+                          <br>
+                          <img src="/static/img/weixin.png" width="40%">
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+        </div> <!-- ./container -->
+      </div>
+
+      <div class="bottom-band">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 copy-info">
+
+            © <a href="／">Omega Genetics</a> All Rights Reserved 2017			        </div>
+
+            <div class="col-sm-6 extra-info">
+            <nav id="wbc9-footer" class="footer-menu">
+                <ul id="footer-menu" class="wbc_footer_menu">
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-249"><a href="/">Home</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242"><a href="/service/">科技服务</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-246"><a href="/medicine/1/">医学健康</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173"><a href="/support/1/">技术支持</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-250"><a href="/job/">招贤纳士</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a href="/about/company/">关于我们</a></li>
+                </ul>
+            </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- jssor slider scripts-->
+    <script type="text/javascript" src="/static/js/jssor.slider.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootsnav.js"></script>
+    <script>
+     $(document).ready(function(){
+        var $dropdownLi = $('li.dropdown');
+
+        $dropdownLi.mouseover(function() {
+            $(this).addClass('open');
+        }).mouseout(function(){
+            $(this).removeClass('open');
+        });
+        $('#navbar .nav li.dropdown a.dropdown-toggle').click(function() {
+            window.location.href = $(this).attr("href");
+            //console.log($(this).attr("href"));
+        })
+    });
+    </script>
+    {% block js %}
+    
+    {% endblock %}
+
+</body>
+</html>

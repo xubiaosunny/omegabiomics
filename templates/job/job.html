@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}招贤纳士{% endblock %}
+{% block content %}
+<div style=" height: 100px;"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>招贤纳士</h1>
+        <h5>简历投递方式</h5>
+        <p>简历投递至xubiaosunny@163.com,*********************</p>
+    </div>
+    {% for foo in item %}
+        {% if forloop.counter0|divisibleby:2 %}
+        <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">{{ foo.title }}
+                  <span class="text-muted" style="font-size: 16px">{{ foo.work_place }}</span>
+              </h2>
+                <h4>岗位职责：</h4>
+                <p>{{ foo.duty|safe }}</p>
+                <h4>岗位要求：</h4>
+                <p>{{ foo.request|safe }}</p>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+            <hr>
+        {% else %}
+        <div class="row featurette">
+            <div class="col-md-5"></div>
+            <div class="col-md-7">
+              <h2 class="featurette-heading">{{ foo.title }}
+                  <span class="text-muted" style="font-size: 16px">{{ foo.work_place }}</span>
+              </h2>
+                <h4>岗位职责：</h4>
+                <p>{{ foo.duty|safe }}</p>
+                <h4>岗位要求：</h4>
+                <p>{{ foo.request|safe }}</p>
+            </div>
+        </div>
+        <hr>
+        {% endif %}
+    {% endfor %}
+</div><!--/.container-->
+{% endblock %}
+{% block js %}
+
+<script>
+
+</script>
+{% endblock %}

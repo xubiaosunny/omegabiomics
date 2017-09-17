@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}联系我们{% endblock %}
+{% block content %}
+<div style=" height: 100px;"></div>
+<div class="container">
+
+  <div class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-9">
+        <div class="jumbotron">
+            <h1>联系我们</h1>
+        </div>
+        <table class="table">
+            <tr>
+              <th>电话：</th>
+              <th>010 - 67832281; 67832291；</th>
+            </tr>
+            <tr>
+              <th>传真:</th>
+              <th>010 - 80741915</th>
+            </tr>
+            <tr>
+              <th>邮箱:</th>
+              <th><p>seq@omegagenetics.com（测序）</p>
+            <p>service@omegagenetics.com （项目服务）</p>
+            <p>order@omegagenetics.com（试剂盒订购）</p>
+            <p>market@omegagenetics.com （市场咨询）</p></th>
+            </tr>
+            <tr>
+              <th>地址：</th>
+              <th>北京市昌平区北七家镇西沙工业园11号9 #院</th>
+            </tr>
+        </table>
+    </div><!--/.col-xs-12.col-sm-9-->
+
+    {% include 'about/sidebar.html' %}
+  </div><!--/row-->
+</div><!--/.container-->
+{% endblock %}
+{% block js %}
+
+<script>
+
+</script>
+{% endblock %}
