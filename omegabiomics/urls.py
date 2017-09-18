@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include, static
 from django.contrib import admin
 from django.conf import settings
-from home.views import index
+from home.views import index, search
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^search/$', search),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^service/',include('service.urls')),
     url(r'^medicine/',include('medicine.urls')),
