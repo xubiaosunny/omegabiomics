@@ -57,128 +57,137 @@
     <!-- NAVBAR
     ================================================== -->
     <style>
-.navigation-down{position:absolute;top:100px;left:0px;width:100%;z-index:100}
-.navigation-down .nav-down-menu{width:100%;margin:0;background:#344157;position:absolute;top:0px}
-.navigation-down .nav-down-menu .navigation-down-inner{margin:auto;width:1200px;position:relative}
-.navigation-down .nav-down-menu dl{float:left;margin:18px 80px 18px 0}
-.navigation-down .menu-1 dl{margin:20px 80px 25px 0}
-.navigation-down .menu-1 dt{font:normal 16px "microsoft yahei";color:#61789e;padding-bottom:10px;border-bottom:1px solid #61789e;margin-bottom:10px}
-.navigation-down .menu-1 dd a{color:#fff;font:normal 14px/30px "microsoft yahei"}
-.navigation-down .menu-1 dd a:hover{color:#60aff6}
-.navigation-down .menu-2 dd a,.navigation-down .menu-3 dd a{color:#fff;font:normal 16px "microsoft yahei"}
+        /* use navbar-wrapper to wrap navigation bar, the purpose is to overlay navigation bar above slider */
+        .navbar-wrapper {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 51px;
+        }
+        .navbar-wrapper > .container {
+            padding: 0;
+        }
 
+        @media all and (max-width: 768px ){
+            .navbar-wrapper {
+                position: relative;
+                top: 0px;
+            }
+        }
     </style>
-    <nav class="navbar navbar-default" style="margin-bottom: 0px">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#">
-            <img alt="Brand" src="/static/img/logo-1.jpeg" height="50px">
-          </a>
-        </div>
-          <form class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Search</button>
-            </form>
-          <p class="navbar-text navbar-right">
-              <a href="#">中文</a>|<a href="#">EN</a>
-          </p>
-          <p class="navbar-text navbar-right">
-              <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 010-67832281 67832291
-          </p>
-      </div>
-    </nav>
-    <nav class="navbar navbar-inverse"  style="margin-bottom: 0px">
-      <div class="container">
-        <ul class="nav navbar-nav">
-        <li><a href="/">首页</a></li>
-        <li><a href="/service/" _t_nav="service">科技服务</a></li>
-        <li><a href="/medicine/1/" _t_nav="medicine">医学健康</a></li>
-        <li><a href="/support/1/" _t_nav="support">技术支持</a></li>
-        <li><a href="/job/">招贤纳士</a></li>
-        <li><a href="/about/company/" _t_nav="about">关于我们</a></li>
-      </ul>
-      </div>
-    </nav>
+    <style type="text/css">
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+    </style>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Omega Genetics</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/">首页</a></li>
+                            <li class="dropdown">
+                                <a href="/service/" class="dropdown-toggle" data-toggle="dropdown">科技服务</a>
+                                <ul class="dropdown-menu">
+                                    {% for k, v in request.session.service.items %}
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >{{ k }}</a>
+                                        <ul class="dropdown-menu">
+                                            {% for i in v %}
+                                            <li><a href="{{ i.0 }}">{{ i.1 }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/medicine/1/" class="dropdown-toggle" data-toggle="dropdown">医学健康</a>
+                                <ul class="dropdown-menu">
+                                    {% for m in request.session.medicine %}
+                                    <li><a href="{{ m.0 }}">{{ m.1 }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/support/1/" class="dropdown-toggle" data-toggle="dropdown">技术支持</a>
+                                <ul class="dropdown-menu">
+                                    {% for s in request.session.support %}
+                                    <li><a href="{{ s.0 }}">{{ s.1 }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="/job/">招贤纳士</a></li>
+                            <li class="dropdown">
+                                <a href="/about/company/" class="dropdown-toggle" data-toggle="dropdown">关于我们</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/about/company/">公司介绍</a></li>
+                                    <li><a href="/about/team/">团队介绍</a></li>
+                                    <li><a href="/about/news/">新闻动态</a></li>
+                                    <li><a href="/about/partner/">合作伙伴</a></li>
+                                    <li><a href="/about/contact_us/">联系我们</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-<div class="navigation-down">
-    <div id="service" class="nav-down-menu menu-1" style="display: none;" _t_nav="service">
-        <div class="navigation-down-inner">
-            <dl style="margin-left: 5%;"></dl>
-            {% for k, v in request.session.service.items %}
-            <dl>
-                <dt>{{ k }}</dt>
-                {% for i in v %}
-                <dd>
-                    <a href="{{ i.0 }}">{{ i.1 }}</a>
-                </dd>
-                {% endfor %}
-            </dl>
-            {% endfor %}
         </div>
     </div>
-    <div id="medicine" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="medicine">
-        <div class="navigation-down-inner">
-            <dl style="margin-left: 5%;"></dl>
-            {% for i in request.session.medicine %}
-                <dl>
-                    <dd>
-                        <a class="link" href="{{ i.0 }}">{{ i.1 }}</a>
-                    </dd>
-                </dl>
-            {% endfor %}
-        </div>
-    </div>
-    <div id="support" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="support">
-        <div class="navigation-down-inner">
-            <dl style="margin-left: 5%;"></dl>
-            {% for i in request.session.support %}
-                <dl>
-                    <dd>
-                        <a class="link" href="{{ i.0 }}">{{ i.1 }}</a>
-                    </dd>
-                </dl>
-            {% endfor %}
-        </div>
-    </div>
-    <div id="about" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="about">
-        <div class="navigation-down-inner">
-            <dl style="margin-left: 5%;"></dl>
-            <dl>
-                <dd>
-                    <a class="link" href="/about/company/">公司介绍</a>
-                </dd>
-            </dl>
-            <dl>
-                <dd>
-                    <a class="link" href="/about/team/">团队介绍</a>
-                </dd>
-            </dl>
-            <dl>
-                <dd>
-                    <a class="link" href="/about/news/">新闻动态</a>
-                </dd>
-            </dl>
-            <dl>
-                <dd>
-                    <a class="link" href="/about/partner/">合作伙伴</a>
-                </dd>
-            </dl>
-            <dl>
-                <dd>
-                    <a class="link" href="/about/contact_us/">联系我们</a>
-                </dd>
-            </dl>
-        </div>
-    </div>
-</div>
+
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-    {% if request.path != '/' %}
-    <div style=" height: 30px;"></div>
-    {% endif %}
     {% block content %}{% endblock %}
     <style>
         /************************************************************************
@@ -307,7 +316,7 @@
                           </p>
                           <p>网址：www.omegagenetics.com.cn</p>
                           <br>
-                          <img src="/static/img/weixin.png" width="30%">
+                          <img src="/static/img/weixin.png" width="40%">
                       </div>
                   </div>
                 </div>
@@ -354,32 +363,19 @@
 	<script type="text/javascript" src="/static/js/bootsnav.js"></script>
     <script>
      $(document).ready(function(){
+        var $dropdownLi = $('li.dropdown');
 
+        $dropdownLi.mouseover(function() {
+            $(this).addClass('open');
+        }).mouseout(function(){
+            $(this).removeClass('open');
+        });
+        $('#navbar .nav li.dropdown a.dropdown-toggle').click(function() {
+            window.location.href = $(this).attr("href");
+            //console.log($(this).attr("href"));
+        })
     });
-
     </script>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	var qcloud={};
-	$('[_t_nav]').hover(function(){
-		var _nav = $(this).attr('_t_nav');
-		clearTimeout( qcloud[ _nav + '_timer' ] );
-		qcloud[ _nav + '_timer' ] = setTimeout(function(){
-		$('[_t_nav]').each(function(){
-		$(this)[ _nav == $(this).attr('_t_nav') ? 'addClass':'removeClass' ]('nav-up-selected');
-		});
-		$('#'+_nav).stop(true,true).slideDown(200);
-		}, 150);
-	},function(){
-		var _nav = $(this).attr('_t_nav');
-		clearTimeout( qcloud[ _nav + '_timer' ] );
-		qcloud[ _nav + '_timer' ] = setTimeout(function(){
-		$('[_t_nav]').removeClass('nav-up-selected');
-		$('#'+_nav).stop(true,true).slideUp(200);
-		}, 150);
-	});
-});
-</script>
     {% block js %}
     
     {% endblock %}
