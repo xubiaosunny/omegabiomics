@@ -13,9 +13,18 @@ class Carousel(models.Model):
         verbose_name = 'Banner配置'
         verbose_name_plural = 'Banner配置'
 
+
 class Company(models.Model):
     introduction = RichTextField(verbose_name='公司介绍')
     class Meta:
         ordering = ["-id",]
         verbose_name = '公司介绍'
         verbose_name_plural = '公司介绍'
+
+
+class ModuleImg(models.Model):
+    img = models.ImageField(upload_to='module/%Y/%m/%d', verbose_name='图片')
+    link = models.URLField(verbose_name="链接地址", null=True, blank=True)
+    class Meta:
+        verbose_name = '首页三图片（只能填三个）'
+        verbose_name_plural = '首页三图片（只能填三个）'

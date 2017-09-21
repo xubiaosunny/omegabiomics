@@ -7,10 +7,17 @@ class CarouselAdmin(admin.ModelAdmin):
     list_display=('id','img','link','display')
 
 
-admin.site.register(Carousel,CarouselAdmin)
+admin.site.register(Carousel, CarouselAdmin)
 
 class CompanyAdmin(admin.ModelAdmin):
     list_display=('id',)
 
 
-admin.site.register(Company,CompanyAdmin)
+admin.site.register(Company, CompanyAdmin)
+
+
+class ModuleImgAdmin(admin.ModelAdmin):
+    list_display=('id',)
+
+
+admin.site.register(ModuleImg, ModuleImgAdmin)
