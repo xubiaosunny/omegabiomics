@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from home.models import Company
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.

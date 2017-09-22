@@ -15,6 +15,11 @@ class NewsAdmin(admin.ModelAdmin):
     list_display=('id', 'name', 'date')
 
 
+class CompanyAdmin(admin.ModelAdmin):
+    list_display=('id',)
+
+
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(News, NewsAdmin)
+admin.site.register(Company, CompanyAdmin)

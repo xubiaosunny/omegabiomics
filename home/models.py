@@ -15,11 +15,10 @@ class Carousel(models.Model):
 
 
 class Company(models.Model):
-    introduction = RichTextField(verbose_name='公司介绍')
+    introduction = RichTextField(verbose_name='关于奥美德诺')
     class Meta:
-        ordering = ["-id",]
-        verbose_name = '公司介绍'
-        verbose_name_plural = '公司介绍'
+        verbose_name = '关于奥美德诺'
+        verbose_name_plural = '关于奥美德诺'
 
 
 class ModuleImg(models.Model):

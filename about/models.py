@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+
 # Create your models here.
 
 
@@ -30,3 +31,10 @@ class News(models.Model):
         ordering = ['-date', '-id']
         verbose_name = '新闻动态'
         verbose_name_plural = '新闻动态'
+
+
+class Company(models.Model):
+    introduction = RichTextUploadingField(verbose_name='公司介绍')
+    class Meta:
+        verbose_name = '公司介绍'
+        verbose_name_plural = '公司介绍'
