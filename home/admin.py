@@ -9,11 +9,11 @@ class CarouselAdmin(admin.ModelAdmin):
 
 admin.site.register(Carousel, CarouselAdmin)
 
-class CompanyAdmin(admin.ModelAdmin):
+class CompanyIndexAdmin(admin.ModelAdmin):
     list_display=('id',)
 
 
-admin.site.register(Company, CompanyAdmin)
+admin.site.register(CompanyIndex, CompanyIndexAdmin)
 
 
 class ModuleImgAdmin(admin.ModelAdmin):

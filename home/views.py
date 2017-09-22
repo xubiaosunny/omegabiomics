@@ -11,7 +11,7 @@ from itertools import chain
 
 def index(request):
     carousel = Carousel.objects.filter(display=True)
-    company = Company.objects.first()
+    company = CompanyIndex.objects.first()
     module_img = ModuleImg.objects.all()
     return render(request, 'home/index.html', {'carousel': carousel, 'company': company, 'module_img': module_img})
 

@@ -14,7 +14,7 @@ class Carousel(models.Model):
         verbose_name_plural = 'Banner配置'
 
 
-class Company(models.Model):
+class CompanyIndex(models.Model):
     introduction = RichTextField(verbose_name='关于奥美德诺')
     class Meta:
         verbose_name = '关于奥美德诺'
