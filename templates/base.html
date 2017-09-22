@@ -94,8 +94,8 @@
         <ul class="nav navbar-nav">
         <li><a href="/">首页</a></li>
         <li><a href="/service/" _t_nav="service">科研服务</a></li>
-        <li><a href="/medicine/1/" _t_nav="medicine">基础技术服务</a></li>
-        <li><a href="/support/1/" _t_nav="support">产品中心</a></li>
+        <li><a href="{{ request.session.medicine.0.0 }}" _t_nav="medicine">基础技术服务</a></li>
+        <li><a href="{{ request.session.support.0.0 }}" _t_nav="support">产品中心</a></li>
         <li><a href="/job/">招贤纳士</a></li>
         <li><a href="/about/company/" _t_nav="about">关于我们</a></li>
       </ul>
@@ -119,8 +119,8 @@
         </div>
     </div>
     <div id="medicine" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="medicine">
+    <div style="margin-left: 5%;"></div>
         <div class="navigation-down-inner">
-            <dl style="margin-left: 5%;"></dl>
             {% for i in request.session.medicine %}
                 <dl>
                     <dd>
@@ -267,7 +267,7 @@
                 </div>
             </div>
             <div class="col-sm-2">
-              <div class="widget widget_text"><h4 class="widget-title">科技服务</h4>
+              <div class="widget widget_text"><h4 class="widget-title">科研服务</h4>
                   <div class="footer-li">
                     <ul style="padding-left: 0px">
                       {% for k, v in request.session.service.items %}
@@ -278,7 +278,7 @@
                 </div>
             </div>
               <div class="col-sm-2">
-              <div class="widget widget_text"><h4 class="widget-title">医学健康</h4>
+              <div class="widget widget_text"><h4 class="widget-title">基础技术服务</h4>
                   <div class="footer-li">
                     <ul style="padding-left: 0px">
                       {% for x in request.session.medicine %}
@@ -289,7 +289,7 @@
                 </div>
             </div>
               <div class="col-sm-2">
-              <div class="widget widget_text"><h4 class="widget-title">技术支持</h4>
+              <div class="widget widget_text"><h4 class="widget-title">产品中心</h4>
                   <div class="footer-li">
                     <ul style="padding-left: 0px">
                       {% for x in request.session.support %}
@@ -328,9 +328,9 @@
             <nav id="wbc9-footer" class="footer-menu">
                 <ul id="footer-menu" class="wbc_footer_menu">
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-249"><a href="/">Home</a></li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242"><a href="/service/">科技服务</a></li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-246"><a href="/medicine/1/">医学健康</a></li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173"><a href="/support/1/">技术支持</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242"><a href="/service/">科研服务</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-246"><a href="/medicine/1/">基础技术服务</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173"><a href="/support/1/">产品中心</a></li>
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-250"><a href="/job/">招贤纳士</a></li>
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a href="/about/company/">关于我们</a></li>
                 </ul>

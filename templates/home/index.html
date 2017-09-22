@@ -102,12 +102,15 @@
           <a href="{{ module_img.2.link }}"><img src="{{ MEDIA_URL }}{{ module_img.2.img }}" width="100%"></a>
         </div><!-- /.col-lg-4 -->
     </div>
-    <hr class="featurette-divider" style="margin: 100px 0px">
+    <div class="row featurette"  style="margin-top: 100px">
+        <div class="col-lg-5"><hr class="featurette-divider" style="margin-bottom: 100px"></div>
+        <div class="col-lg-2"><h4 style="text-align: center">我们的优势</h4></div>
+        <div class="col-lg-5"><hr class="featurette-divider" style="margin-bottom: 100px"></div>
+    </div>
     <style>
         #tn > .col-lg-5ths {text-align:center;}
         #tn > .col-lg-5ths > img {height: 180px;width: 160px}
     </style>
-    <h2 style="text-align:center;margin: 60px">核心技术/技术优势</h2>
     <div id="tn" class="row featurette">
         <div class="col-lg-5ths">
           <img src="/static/img/tn/1.jpg">
@@ -125,10 +128,13 @@
           <img src="/static/img/tn/5.jpg">
         </div>
     </div>
-    <hr class="featurette-divider" style="margin-top: 130px;">
+    <div class="row featurette" style="margin-top: 100px">
+        <div class="col-lg-5"><hr class="featurette-divider" style="margin-bottom: 100px"></div>
+        <div class="col-lg-2"><h4 style="text-align: center">公司介绍</h4></div>
+        <div class="col-lg-5"><hr class="featurette-divider" style="margin-bottom: 100px"></div>
+    </div>
     <div class="row featurette">
         <div class="col-md-12">
-            <h2 class="featurette-heading" style="text-align:center;margin: 60px">公司介绍</h2>
             {{ company.introduction|safe }}
         </div>
     </div>
