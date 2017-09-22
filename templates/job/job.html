@@ -3,11 +3,12 @@
 {% block content %}
 <div class="container">
     <img src="/static/img/job/job-1.jpg" width="100%">
-    <div class="jumbotron">
-        <h1>招贤纳士</h1>
-        <h5>简历投递方式</h5>
-        <p>如果您有兴趣加入我们，请投递简历至sunxiaohui@aksontech.cn，我们期待您的加入！</p>
-    </div>
+{#    <div class="jumbotron">#}
+{#        <h1>招贤纳士</h1>#}
+{#        <h5>简历投递方式</h5>#}
+{#        <p>如果您有兴趣加入我们，请投递简历至sunxiaohui@aksontech.cn，我们期待您的加入！</p>#}
+{#    </div>#}
+    <hr>
     {% for foo in item %}
         {% if forloop.counter0|divisibleby:2 %}
         <div class="row featurette">
