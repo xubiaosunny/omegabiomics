@@ -21,3 +21,10 @@ class ModuleImgAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ModuleImg, ModuleImgAdmin)
+
+
+class KeywordAdmin(admin.ModelAdmin):
+    list_display=('id', 'name',)
+
+
+admin.site.register(Keyword, KeywordAdmin)

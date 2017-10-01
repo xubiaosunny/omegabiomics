@@ -27,3 +27,10 @@ class ModuleImg(models.Model):
     class Meta:
         verbose_name = '首页三图片（只能填三个）'
         verbose_name_plural = '首页三图片（只能填三个）'
+
+
+class Keyword(models.Model):
+    name = models.CharField(verbose_name='关键词', max_length=255)
+    class Meta:
+        verbose_name = '网站关键词'
+        verbose_name_plural = '网站关键词'
