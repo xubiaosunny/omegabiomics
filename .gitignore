@@ -2,3 +2,5 @@
 *.pyc
 db.sqlite3
 media/
+static/admin/
+static/ckeditor/
